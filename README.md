@@ -10,5 +10,4 @@ We are going to layer the application into 3 layers:
 - Data Access Layer: which contains the context, the database models, repositories and unit of work.
 
 ## Authors
-Special Thanks to:
   - [@Nora](https://github.com/nora209)
