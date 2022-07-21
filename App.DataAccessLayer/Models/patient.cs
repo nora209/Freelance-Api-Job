@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace App.DataAccessLayer.Models
 {
-    public class patient
+    public class Patient
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public int Age { get; set; }
-     // public Issue Issue { get; set; }
        public virtual ICollection<Issue> Issues { get; set; }
     }
 }

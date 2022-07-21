@@ -9,8 +9,8 @@ namespace App.DataAccessLayer.Repository.GenericRepo
 {
     public class GenericRepo<TEntity> : IGenericRepo<TEntity> where TEntity : class
     {
-        private readonly Context _context;
-        public GenericRepo(Context context)
+        private readonly HospitalContext _context;
+        public GenericRepo(HospitalContext context)
         {
             this._context = context;
         }

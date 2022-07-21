@@ -14,8 +14,8 @@ namespace App.DataAccessLayer.AutoMapper
     {
         public AutoMapperProfile()
         {
-            CreateMap<patient, PatientRead>();
-            CreateMap<PatientWrite, patient>();
+            CreateMap<Patient, PatientRead>();
+            CreateMap<PatientWrite, Patient>();
             CreateMap<Issue, IssueRead>();
             CreateMap<IssueWrite, Issue>();
             CreateMap<Issue, IssueChildRead>();

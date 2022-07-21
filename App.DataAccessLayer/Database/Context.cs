@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace App.DataAccessLayer.Database
 {
-    public class Context:DbContext
+    public class HospitalContext : DbContext
     {
-        public DbSet<patient> patients { set; get; }
-        public DbSet<Issue> issues { set; get; }
-        public Context(DbContextOptions options) : base(options)
+        public DbSet<Patient> Patients { set; get; }
+        public DbSet<Issue> Issues { set; get; }
+        public HospitalContext(DbContextOptions options) : base(options)
         {
-                    
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

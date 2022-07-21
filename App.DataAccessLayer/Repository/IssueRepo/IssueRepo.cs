@@ -11,7 +11,7 @@ namespace App.DataAccessLayer.Repository.IssueRepo
 {
     public class IssueRepo:GenericRepo<Issue>, IIssueRepo
     {
-        public IssueRepo(Context context):base(context)
+        public IssueRepo(HospitalContext context):base(context)
         {
 
         }

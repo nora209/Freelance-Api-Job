@@ -12,8 +12,7 @@ namespace App.DataAccessLayer.Models
 
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-       // public patient Patient { get; set; }
-        public virtual ICollection<patient> Patients{ get; set; }
+        public virtual ICollection<Patient> Patients{ get; set; }
 
     }
 }

@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
  builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("Context");
-builder.Services.AddDbContext<Context>(option =>
+builder.Services.AddDbContext<HospitalContext>(option =>
    option.UseSqlServer(connectionString));
 builder.Services.AddScoped<IPatientRepo, PatientRepo>();
 builder.Services.AddScoped<IIssueRepo, IssueRepo>();

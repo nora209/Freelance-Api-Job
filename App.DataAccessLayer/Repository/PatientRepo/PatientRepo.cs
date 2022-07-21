@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace App.DataAccessLayer.Repository.PatientRepo
 {
-    public class PatientRepo:GenericRepo<patient>, IPatientRepo
+    public class PatientRepo:GenericRepo<Patient>, IPatientRepo
     {
-        private readonly Context context;
+        private readonly HospitalContext context;
 
-        public patient GetPatientByIdWithIssues(int id)
+        public Patient GetPatientByIdWithIssues(int id)
         {
-            return context.patients.Include(b=>b.Issues).FirstOrDefault(x => x.Id == id);
+            return context.Patients.Include(b=>b.Issues).FirstOrDefault(x => x.Id == id);
         }
-        public PatientRepo(Context context):base(context)
+        public PatientRepo(HospitalContext context):base(context)
         {
             this.context = context;
         }

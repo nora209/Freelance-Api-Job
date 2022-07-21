@@ -10,7 +10,7 @@ namespace App.DataAccessLayer.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        public IPatientRepo patientREpo{ get; }
-        public IIssueRepo issueRepo { get; }
+        public IPatientRepo PatientsRepo{ get; }
+        public IIssueRepo IssuesRepo { get; }
     }
 }

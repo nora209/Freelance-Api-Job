@@ -17,18 +17,18 @@ namespace WebAPi.Controllers
     public class PatientController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly Context context;
+        private readonly HospitalContext context;
         private readonly IMapper autoMapper;
-        public PatientController(IUnitOfWork _unitOfWork, Context _context, IMapper _automap)
+        public PatientController(IUnitOfWork _unitOfWork, HospitalContext _context, IMapper _automap)
         {
             unitOfWork = _unitOfWork;
             context = _context;
             autoMapper = _automap;
         }
         [HttpGet]
-        public ActionResult<List<patient>> GetPatients()
+        public ActionResult<List<Patient>> GetPatients()
         {
-            return unitOfWork.patientREpo.GetAll();
+            return unitOfWork.PatientsRepo.GetAll();
             
         }
         
@@ -36,7 +36,7 @@ namespace WebAPi.Controllers
         public ActionResult<PatientRead> GetPatientByID(int id)
         {
 
-            var patientIssue = unitOfWork.patientREpo.GetPatientByIdWithIssues(id);
+            var patientIssue = unitOfWork.PatientsRepo.GetPatientByIdWithIssues(id);
            if(patientIssue == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace WebAPi.Controllers
         [HttpPut("{id}")]
         public ActionResult PutPatient(int id, PatientWrite patientWrite)
         {
-            var PatientToEdit = unitOfWork.patientREpo.GetById(id);
+            var PatientToEdit = unitOfWork.PatientsRepo.GetById(id);
             if (id != PatientToEdit.Id)
             {
                 return BadRequest();
@@ -62,25 +62,25 @@ namespace WebAPi.Controllers
             autoMapper.Map(patientWrite, PatientToEdit);
            // PatientToEdit = issues;
            //unitOfWork.patientREpo.Update(PatientToEdit);
-            unitOfWork.patientREpo.SaveChanges();
+            unitOfWork.PatientsRepo.SaveChanges();
             return Ok("Updated");
         }
 
         [HttpPost]
-        public ActionResult<patient> PostPatient(PatientWrite _patient)
+        public ActionResult<Patient> PostPatient(PatientWrite _patient)
         {
-            patient patient1 = autoMapper.Map<patient>(_patient);
+            Patient patient1 = autoMapper.Map<Patient>(_patient);
             //filter issue where it ids in array _patient
-            patient1.Issues= context.issues.Where(i => _patient.IssuesID.Contains(i.Id)).ToList();
-            unitOfWork.patientREpo.Insert(patient1);
-            unitOfWork.patientREpo.SaveChanges();
+            patient1.Issues= context.Issues.Where(i => _patient.IssuesID.Contains(i.Id)).ToList();
+            unitOfWork.PatientsRepo.Insert(patient1);
+            unitOfWork.PatientsRepo.SaveChanges();
             return CreatedAtAction("GetPatient", new { id = patient1.Id }, value: "added");
         }
         [HttpDelete("{id}")]
         public IActionResult DeletePatient(int id)
         {
-            unitOfWork.patientREpo.Delete(id);
-            if (!unitOfWork.patientREpo.SaveChanges())
+            unitOfWork.PatientsRepo.Delete(id);
+            if (!unitOfWork.PatientsRepo.SaveChanges())
             {
                 return NotFound();
             }

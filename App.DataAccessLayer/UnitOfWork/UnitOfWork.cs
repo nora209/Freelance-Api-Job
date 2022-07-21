@@ -10,13 +10,13 @@ namespace App.DataAccessLayer.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IPatientRepo patientREpo { get; }
+        public IPatientRepo PatientsRepo { get; }
 
-        public IIssueRepo issueRepo { get; }
+        public IIssueRepo IssuesRepo { get; }
         public UnitOfWork(IPatientRepo _patientRepo, IIssueRepo _issueRepo)
         {
-            patientREpo = _patientRepo;
-            issueRepo = _issueRepo;
+            PatientsRepo = _patientRepo;
+            IssuesRepo = _issueRepo;
            
         }
     }

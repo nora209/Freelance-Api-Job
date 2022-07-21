@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace App.DataAccessLayer.Repository.PatientRepo
 {
-    public interface IPatientRepo:IGenericRepo<patient>
+    public interface IPatientRepo:IGenericRepo<Patient>
     {
-        patient GetPatientByIdWithIssues(int id);
+        Patient GetPatientByIdWithIssues(int id);
     }
 }
