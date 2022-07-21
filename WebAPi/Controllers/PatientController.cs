@@ -1,10 +1,5 @@
-﻿
-
-
-using App.DataAccessLayer;
-using App.DataAccessLayer.AutoMapper;
+﻿using App.BusinessLayer.DTOs;
 using App.DataAccessLayer.Database;
-using App.DataAccessLayer.DOTS.PatientDOTs;
 using App.DataAccessLayer.Models;
 using App.DataAccessLayer.UnitOfWork;
 using AutoMapper;
@@ -29,20 +24,20 @@ namespace WebAPi.Controllers
         public ActionResult<List<Patient>> GetPatients()
         {
             return unitOfWork.PatientsRepo.GetAll();
-            
+
         }
-        
+
         [HttpGet("{id}")]
         public ActionResult<PatientRead> GetPatientByID(int id)
         {
 
             var patientIssue = unitOfWork.PatientsRepo.GetPatientByIdWithIssues(id);
-           if(patientIssue == null)
+            if (patientIssue == null)
             {
                 return NotFound();
             }
-            var Patient = autoMapper.Map<PatientRead >(patientIssue);
-           // listOfPatient= autoMapper.Map<PatientRead>(ListOfIssues);
+            var Patient = autoMapper.Map<PatientRead>(patientIssue);
+            // listOfPatient= autoMapper.Map<PatientRead>(ListOfIssues);
             return Patient;
         }
         [HttpPut("{id}")]
@@ -60,8 +55,8 @@ namespace WebAPi.Controllers
             }
             //Issue issues = unitOfWork.issueRepo.GetById(PatientToEdit.Id);
             autoMapper.Map(patientWrite, PatientToEdit);
-           // PatientToEdit = issues;
-           //unitOfWork.patientREpo.Update(PatientToEdit);
+            // PatientToEdit = issues;
+            //unitOfWork.patientREpo.Update(PatientToEdit);
             unitOfWork.PatientsRepo.SaveChanges();
             return Ok("Updated");
         }
@@ -71,7 +66,7 @@ namespace WebAPi.Controllers
         {
             Patient patient1 = autoMapper.Map<Patient>(_patient);
             //filter issue where it ids in array _patient
-            patient1.Issues= context.Issues.Where(i => _patient.IssuesID.Contains(i.Id)).ToList();
+            patient1.Issues = context.Issues.Where(i => _patient.IssuesID.Contains(i.Id)).ToList();
             unitOfWork.PatientsRepo.Insert(patient1);
             unitOfWork.PatientsRepo.SaveChanges();
             return CreatedAtAction("GetPatient", new { id = patient1.Id }, value: "added");
