@@ -24,7 +24,6 @@ namespace App.DataAccessLayer.Repository.GenericRepo
             var idEntity = GetById(id);
             if (idEntity is not null)
             {
-
                 _context.Set<TEntity>().Remove(idEntity);
             }
         }

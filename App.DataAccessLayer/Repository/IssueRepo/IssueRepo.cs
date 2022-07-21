@@ -9,11 +9,18 @@ using System.Threading.Tasks;
 
 namespace App.DataAccessLayer.Repository.IssueRepo
 {
-    public class IssueRepo:GenericRepo<Issue>, IIssueRepo
+    public class IssueRepo : GenericRepo<Issue>, IIssueRepo
     {
-        public IssueRepo(HospitalContext context):base(context)
-        {
+        private readonly HospitalContext _context;
 
+        public IssueRepo(HospitalContext context) : base(context)
+        {
+            _context = context;
+        }
+
+        public List<Issue> GetIssuesByIds(List<int> Ids)
+        {
+            return _context.Issues.Where(i => Ids.Contains(i.Id)).ToList();
         }
     }
 }

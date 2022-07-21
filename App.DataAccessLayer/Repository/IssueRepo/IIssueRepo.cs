@@ -7,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace App.DataAccessLayer.Repository.IssueRepo
-{ 
-    public interface IIssueRepo:IGenericRepo<Issue>
+{
+    public interface IIssueRepo : IGenericRepo<Issue>
     {
+        public List<Issue> GetIssuesByIds(List<int> Ids);
     }
 }
