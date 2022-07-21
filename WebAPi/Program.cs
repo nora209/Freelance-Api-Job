@@ -1,16 +1,13 @@
-using App.DataAccessLayer;
 using App.DataAccessLayer.AutoMapper;
 using App.DataAccessLayer.Database;
-
 using App.DataAccessLayer.Repository.IssueRepo;
-
 using App.DataAccessLayer.Repository.PatientRepo;
 using App.DataAccessLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
- builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("Context");
 builder.Services.AddDbContext<HospitalContext>(option =>

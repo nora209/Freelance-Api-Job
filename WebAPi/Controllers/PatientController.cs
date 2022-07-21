@@ -1,8 +1,6 @@
 ﻿using App.BusinessLayer.DTOs;
-using App.DataAccessLayer.Database;
+using App.BusinessLayer.Manager;
 using App.DataAccessLayer.Models;
-using App.DataAccessLayer.UnitOfWork;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPi.Controllers
@@ -11,20 +9,16 @@ namespace WebAPi.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly HospitalContext context;
-        private readonly IMapper autoMapper;
-        public PatientController(IUnitOfWork _unitOfWork, HospitalContext _context, IMapper _automap)
+        private readonly PatientsManager _patientsManager;
+
+        public PatientController(PatientsManager patientsManager)
         {
-            unitOfWork = _unitOfWork;
-            context = _context;
-            autoMapper = _automap;
+            _patientsManager = patientsManager;
         }
         [HttpGet]
-        public ActionResult<List<Patient>> GetPatients()
+        public ActionResult<List<PatientRead>> GetPatients()
         {
-            return unitOfWork.PatientsRepo.GetAll();
-
+            return _patientsManager.GetPatients();
         }
 
         [HttpGet("{id}")]
