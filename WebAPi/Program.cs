@@ -1,4 +1,4 @@
-using App.DataAccessLayer.AutoMapper;
+using App.BusinessLayer.AutoMapper;
 using App.DataAccessLayer.Database;
 using App.DataAccessLayer.Repository.IssueRepo;
 using App.DataAccessLayer.Repository.PatientRepo;
