@@ -1,11 +1,4 @@
-﻿using App.DataAccessLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace App.DataAccessLayer.DOTS.PatientDOTs
+﻿namespace App.BusinessLayer.DTOs
 {
     public class PatientWrite
     {
