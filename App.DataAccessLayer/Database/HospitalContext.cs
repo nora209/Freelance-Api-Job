@@ -10,8 +10,8 @@ namespace App.DataAccessLayer.Database
 {
     public class HospitalContext : DbContext
     {
-        public DbSet<Patient> Patients { set; get; }
-        public DbSet<Issue> Issues { set; get; }
+        public DbSet<Patient> Patients { set; get; } = null!; //First method to solve null wanrning issue
+        public DbSet<Issue> Issues => Set<Issue>(); //Second method to solve null wanrning issue
         public HospitalContext(DbContextOptions options) : base(options)
         {
 

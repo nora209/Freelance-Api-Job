@@ -12,6 +12,6 @@ namespace App.DataAccessLayer.Models
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public int Age { get; set; }
-       public virtual ICollection<Issue> Issues { get; set; }
+        public virtual ICollection<Issue> Issues { get; set; } = new HashSet<Issue>();
     }
 }
