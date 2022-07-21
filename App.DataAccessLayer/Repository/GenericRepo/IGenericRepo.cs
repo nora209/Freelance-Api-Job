@@ -9,7 +9,7 @@ namespace App.DataAccessLayer.Repository.GenericRepo
     public interface IGenericRepo<TEnitity> where TEnitity : class
     {
         List<TEnitity> GetAll();
-        TEnitity GetById(int id);
+        TEnitity? GetById(int id);
         void Update(TEnitity Entity);
         void Add(TEnitity Entity);
         void Delete(int id);

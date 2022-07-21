@@ -14,7 +14,7 @@ namespace App.DataAccessLayer.Repository.PatientRepo
     {
         private readonly HospitalContext context;
 
-        public Patient GetPatientByIdWithIssues(int id)
+        public Patient? GetPatientByIdWithIssues(int id)
         {
             return context.Patients.Include(b=>b.Issues).FirstOrDefault(x => x.Id == id);
         }

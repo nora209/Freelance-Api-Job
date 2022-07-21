@@ -10,6 +10,6 @@ namespace App.DataAccessLayer.Repository.PatientRepo
 {
     public interface IPatientRepo:IGenericRepo<Patient>
     {
-        Patient GetPatientByIdWithIssues(int id);
+        Patient? GetPatientByIdWithIssues(int id);
     }
 }
