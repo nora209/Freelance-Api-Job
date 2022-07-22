@@ -35,7 +35,7 @@ namespace WebAPi.Controllers
         [HttpPut("{id}")]
         public ActionResult PutPatient(int id, PatientWrite patientWriteDto)
         {
-            if (_patientsManager.DoesPatientExist(id))
+            if (!_patientsManager.DoesPatientExist(id))
             {
                 return NotFound();
             }
